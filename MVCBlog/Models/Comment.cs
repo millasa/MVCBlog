@@ -7,17 +7,21 @@ namespace MVCBlog.Models
     public class Comment
     {
         [Key]
-        public int CommentID { get; set; }
+        public int CommentId { get; set; }
 
         [Required]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         [Required]
-        public int ArticleID { get; set; }
+        public int ArticleId { get; set; }
 
+        [Required]
         public DateTime CommentDate { get; set; }
+        [Required]
         public string CommentText { get; set; }
 
+        [ForeignKey("ArticleId")]
         public virtual Article Article { get; set; }
-        public virtual User Author { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
     }
 }

@@ -118,9 +118,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201310302053004_UpdateModelsRelationships.cs" />
-    <Compile Include="Migrations\201310302053004_UpdateModelsRelationships.Designer.cs">
-      <DependentUpon>201310302053004_UpdateModelsRelationships.cs</DependentUpon>
+    <Compile Include="Migrations\201310312016060_Initial.cs" />
+    <Compile Include="Migrations\201310312016060_Initial.Designer.cs">
+      <DependentUpon>201310312016060_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
@@ -152,8 +152,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201310302053004_UpdateModelsRelationships.resx">
-      <DependentUpon>201310302053004_UpdateModelsRelationships.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201310312016060_Initial.resx">
+      <DependentUpon>201310312016060_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
