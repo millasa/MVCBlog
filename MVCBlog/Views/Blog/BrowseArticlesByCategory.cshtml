@@ -1,0 +1,45 @@
+﻿@model MVCBlog.Models.Category
+
+@{
+    ViewBag.Title = "Browse Category Articles";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length) {
+        @input
+    } else {
+        @input.Substring(0, length)<text>...</text>
+    }
+} 
+
+<h2>Articles in @Model.CategoryName</h2>
+
+<table class="uk-table uk-table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Text</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model.Articles)
+        {
+            <tr>
+                <td class="uk-width-1-10">
+                    @Html.DisplayFor(modelItem => article.ArticleName)
+                </td>
+                <td class="uk-width-1-10">
+                    @Html.DisplayFor(modelItem => article.User.Login)
+                </td>
+                <td class="uk-width-7-10">
+                    @Truncate(article.ArticleText, 250)
+                </td>
+                <td class="uk-width-1-10">
+                    @Html.ActionLink("View full text", "Article", new { id = article.ArticleId })
+                </td>
+            </tr>
+        }
+</table>

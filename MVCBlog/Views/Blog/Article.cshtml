@@ -1,0 +1,25 @@
+﻿@model MVCBlog.Models.Article
+
+@{
+    ViewBag.Title = "Article";
+}
+
+<article class="uk-article">
+	<h1 class="uk-article-title">@Model.ArticleName</h1>
+	<p class="uk-article-meta">Written by @Model.User.Login</p>
+	<p>@Model.ArticleText</p>
+    <hr class="uk-article-divider">
+</article>
+<p></p>
+
+@foreach (var comment in Model.Comments)
+{
+    <article class="uk-comment">
+	    <header class="uk-comment-header">
+		    <img class="uk-comment-avatar" src="@Url.Content("~/Content/images/avatar_placeholder.png")" alt="">
+		    <div class="uk-comment-meta">Written by @comment.User.Login on @comment.CommentDate</div>
+	    </header>
+	    <div class="uk-comment-body">@comment.CommentText</div>
+    </article>
+    <p></p>
+}

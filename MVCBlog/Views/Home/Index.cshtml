@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MVCBlog.Models.Category>
+
+@{
+    ViewBag.Title = "Welcome to MyBlog";
+}
+
+<h2>Blog categories:</h2>
+
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>@Html.ActionLink(category.CategoryName, "BrowseArticlesByCategory", "Blog", new { id = category.CategoryId }, null)</li>
+    }
+</ul>
