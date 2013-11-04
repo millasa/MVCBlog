@@ -186,10 +186,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Blog\BrowseArticlesByCategory.cshtml" />
+    <Content Include="Views\Blog\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Blog\Article.cshtml" />
+    <Content Include="Views\Blog\Category.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Blog\CreateArticle.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
