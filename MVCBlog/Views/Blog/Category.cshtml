@@ -13,6 +13,11 @@
     }
 } 
 
+<ul class="uk-breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="uk-active"><span>@Model.CategoryName</span></li>
+</ul>
+
 <h2>Articles in @Model.CategoryName</h2>
 
 <table class="uk-table uk-table-hover">
@@ -44,4 +49,4 @@
         }
 </table>
 
-<p class="">@Html.ActionLink("Add Article", "CreateArticle", "Blog", new { @class="uk-button uk-button-success"} )</p>
+@Html.ActionLink("Add Article", "CreateArticle", "Blog", new { @class="uk-button uk-button-success"} )

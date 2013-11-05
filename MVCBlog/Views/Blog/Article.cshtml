@@ -4,6 +4,13 @@
     ViewBag.Title = "Article";
 }
 
+<ul class="uk-breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li><a href="@Url.Action("Category", "Blog", new { id = Model.CategoryId })">@Model.Category.CategoryName</a></li>
+    <li class="uk-active"><span>Article</span></li>
+</ul>
+
+
 <article class="uk-article">
 	<h1 class="uk-article-title">@Model.ArticleName</h1>
 	<p class="uk-article-meta">Written by @Model.User.Login</p>

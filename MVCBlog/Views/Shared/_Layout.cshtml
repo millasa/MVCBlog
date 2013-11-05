@@ -8,10 +8,12 @@
     <body>
         <div class="uk-container uk-container-center">
             <div id="header">
-                <h1 class="uk-text-bold uk-text-success">MyBlog</h1>
                 <nav class="uk-navbar">
+                    <a class="uk-navbar-brand" href="@Url.Action("Index", "Home")"><i class="uk-icon-coffee uk-icon-medium"></i> </a>
                     <ul class="uk-navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>
+                            <a href="@Url.Action("Index", "Home")"><i class="uk-icon-home"></i> Home</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

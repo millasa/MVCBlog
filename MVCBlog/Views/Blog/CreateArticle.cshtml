@@ -4,41 +4,63 @@
     ViewBag.Title = "Create Article";
 }
 
+<ul class="uk-breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="uk-active"><span>Create Article</span></li>
+</ul>
+
 <h2>Create Article</h2>
 
-@using (Html.BeginForm()) {
+<!-- just an experiment
+@{
+    var random = new Random();
+    var theClass = random.Next(2) % 2 == 0 ? "error" : "success";
+}
+
+<style type="text/css">
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
+</style>
+-->
+
+<form action="@Url.Action("CreateArticle", "Blog")" method="post" class="uk-form uk-form-horizontal">
+
     @Html.ValidationSummary(true)
 
-    <form class="uk-form uk-form-horizontal">
-        <fieldset>
-            <div class="uk-form-row">
-                <label class="uk-form-label" for="form-h-it">@Html.LabelFor(model => model.ArticleName)</label>
-                <div class="uk-form-controls">
-                    @Html.EditorFor(model => model.ArticleName, new { @id = "form-h-it" })
-                    @Html.ValidationMessageFor(model => model.ArticleName)
-                </div>
+    <fieldset>
+        <legend></legend>
+        <div class="uk-form-row">
+            <label class="uk-form-label @theClass">@Html.LabelFor(model => model.ArticleName)</label>
+            <div class="uk-form-controls">
+                @Html.EditorFor(model => model.ArticleName, new { @class = "uk-form-width-large" })
+                @Html.ValidationMessageFor(model => model.ArticleName)
             </div>
-            <div class="uk-form-row">
-                <label class="uk-form-label" for="form-h-s">@Html.LabelFor(model => model.CategoryId, "Category")</label>
-                <div class="uk-form-controls">
-                    @Html.DropDownList("CategoryId", String.Empty)
-                    @Html.ValidationMessageFor(model => model.CategoryId)
-                </div>
+        </div>
+        <div class="uk-form-row">
+            <label class="uk-form-label">@Html.LabelFor(model => model.CategoryId, "Category")</label>
+            <div class="uk-form-controls">
+                @Html.DropDownList("CategoryId", String.Empty)
+                @Html.ValidationMessageFor(model => model.CategoryId)
             </div>
-            <div class="uk-form-row">
-                <label class="uk-form-label" for="form-h-t">@Html.LabelFor(model => model.ArticleText)</label>
-                <div class="uk-form-controls">
-                    @Html.TextAreaFor(model => model.ArticleText, new { @id = "form-h-t" })
-                    @Html.ValidationMessageFor(model => model.ArticleText)
-                </div>
+        </div>
+        <div class="uk-form-row">
+            <label class="uk-form-label">@Html.LabelFor(model => model.ArticleText)</label>
+            <div class="uk-form-controls" >
+                @Html.TextAreaFor(model => model.ArticleText)
+                @Html.ValidationMessageFor(model => model.ArticleText)
             </div>
-            <p>@Html.Hidden("UserId", 3)</p>
-            <div class="uk-form-row">
-                <button class="uk-button" type="submit">Button</button>
-            </div>
-        </fieldset>
-    </form>
-}
+        </div>
+        <p>@Html.Hidden("UserId", 3)</p>
+        <div class="uk-form-row">
+            <button class="uk-button uk-button-success" type="submit">Add Article</button>
+        </div>
+    </fieldset>
+</form>
 
 <div>
     @Html.ActionLink("Back to List", "Category")
