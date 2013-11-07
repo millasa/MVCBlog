@@ -63,5 +63,27 @@ namespace MVCBlog.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", article.CategoryId);
             return View(article);
         }
+        
+        public ActionResult DeleteArticle(int id = 0)
+        {
+            Article article = db.Articles.Find(id);
+            if (article == null)
+            {
+                return HttpNotFound();
+            }
+            return View(article);
+        }
+
+        //
+        // POST: /Blog/Article/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Article article = db.Articles.Find(id);
+            db.Article.Remove(article);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
