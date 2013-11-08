@@ -10,9 +10,22 @@
     <li class="uk-active"><span>Article</span></li>
 </ul>
 
+<div>
+    @Html.ActionLink("Edit Article", "EditArticle", "Blog", new { @class = "uk-button uk-button-success" })
+    @Html.ActionLink("Delete Article", "DeleteArticle", "Blog", new { @class = "uk-button uk-button-success" })
+</div>
+
+<button class="uk-button" data-uk-modal="{target:'#modal-2'}">Open</button>
+<div id="modal-2" class="uk-modal">
+    <div class="uk-modal-dialog  uk-modal-dialog-slide">
+        <a href="" class="uk-modal-close uk-close"></a>
+        <h1>Headline</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</div>
 
 <article class="uk-article">
-	<h1 class="uk-article-title">@Model.ArticleName</h1>
+    <h1 class="uk-article-title">@Model.ArticleName</h1>
 	<p class="uk-article-meta">Written by @Model.User.Login</p>
 	<p>@Model.ArticleText</p>
     <hr class="uk-article-divider">

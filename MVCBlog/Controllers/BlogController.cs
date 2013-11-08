@@ -77,13 +77,13 @@ namespace MVCBlog.Controllers
         //
         // POST: /Blog/Article/Delete/5
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteArticle")]
         public ActionResult DeleteConfirmed(int id)
         {
             Article article = db.Articles.Find(id);
-            db.Article.Remove(article);
+            db.Articles.Remove(article);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Category", new { id = article.CategoryId });
         }
     }
 }
