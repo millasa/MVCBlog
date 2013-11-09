@@ -11,17 +11,8 @@
 </ul>
 
 <div>
+    <button class="uk-button uk-button-success show-modal">Delete Article</button>
     @Html.ActionLink("Edit Article", "EditArticle", "Blog", new { @class = "uk-button uk-button-success" })
-    @Html.ActionLink("Delete Article", "DeleteArticle", "Blog", new { @class = "uk-button uk-button-success" })
-</div>
-
-<button class="uk-button" data-uk-modal="{target:'#modal-2'}">Open</button>
-<div id="modal-2" class="uk-modal">
-    <div class="uk-modal-dialog  uk-modal-dialog-slide">
-        <a href="" class="uk-modal-close uk-close"></a>
-        <h1>Headline</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
 </div>
 
 <article class="uk-article">
@@ -43,3 +34,27 @@
     </article>
     <p></p>
 }
+
+<div class="uk-modal" id="delete-modal">
+    <div class="uk-modal-dialog  uk-modal-dialog-slide">
+        <form method="post" action="@Url.Action("DeleteArticle", "Blog", new { id = Model.ArticleId } )">
+            <p>Are you sure you want to delete "@Model.ArticleName" article?</p>
+            <button class="uk-button uk-button-primary" id="do-cancel">Cancel</button>
+            <button class="uk-button uk-button-danger" type="submit">Delete</button>    
+        </form>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var modal = new $.UIkit.modal.Modal("#delete-modal");
+
+        $(".show-modal").click(function () {
+            modal.show();
+        });
+
+        $("#do-cancel").click(function () {
+            modal.hide();
+        });
+    });
+</script>
