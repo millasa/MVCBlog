@@ -57,14 +57,46 @@ namespace MVCBlog.Controllers
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
-                return RedirectToAction("Category", new { id = article.CategoryId });
+                return RedirectToAction("Article", new { id = article.ArticleId });
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", article.CategoryId);
             return View(article);
         }
-        
-        public ActionResult DeleteArticle(int id = 0)
+
+        //
+        // GET: /Blog/Article/Edit/5
+
+        public ActionResult EditArticle(int id)
+        {
+            var article = db.Articles.Single(c => c.ArticleId == id);
+
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", article.CategoryId);
+            return View(article);
+        }
+
+        //
+        // POST: /Blog/Article/Edit/5
+
+        [HttpPost]
+        public ActionResult EditArticle(int id, Article article)
+        {
+            if (ModelState.IsValid)
+            {
+                article.ArticleId = id;
+                db.Entry(article).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Article", new { id = article.ArticleId });
+            }
+
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", article.CategoryId);
+            return View(article);
+        }
+
+        //
+        // GET: /Blog/Article/Delete/5
+
+        public ActionResult DeleteArticle(int id)
         {
             Article article = db.Articles.Find(id);
             if (article == null)

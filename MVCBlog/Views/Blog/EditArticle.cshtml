@@ -1,63 +1,48 @@
 ﻿@model MVCBlog.Models.Article
 
 @{
-    ViewBag.Title = "Create Article";
+    ViewBag.Title = "Edit Article";
 }
 
 <ul class="uk-breadcrumb">
     <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-    <li class="uk-active"><span>Create Article</span></li>
+    <li class="uk-active"><span>Edit Article</span></li>
 </ul>
 
-<h2>Create Article</h2>
+<h2>Edit Article</h2>
 
-<!-- just an experiment with color of text depending on value random returns
-@{
-    var random = new Random();
-    var theClass = random.Next(2) % 2 == 0 ? "error" : "success";
-}
-
-<style type="text/css">
-    .error {
-        color: red;
-    }
-
-    .success {
-        color: green;
-    }
-</style>
--->
-
-<form action="@Url.Action("CreateArticle", "Blog")" method="post" class="uk-form uk-form-horizontal">
+<form action="@Url.Action("EditArticle", "Blog")" method="post" class="uk-form uk-form-horizontal">
 
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend></legend>
         <div class="uk-form-row">
-            <label class="uk-form-label @theClass">@Html.LabelFor(model => model.ArticleName)</label>
+            <label class="uk-form-label">@Html.LabelFor(model => model.ArticleName)</label>
             <div class="uk-form-controls">
-                <input class="uk-form-width-large" data-val="true" data-val-required="The ArticleName field is required." id="ArticleName" name="ArticleName" type="text" value="" />
+                <input class="uk-form-width-large" data-val="true" data-val-required="The ArticleName field is required." id="ArticleName" name="ArticleName" type="text" value="@Model.ArticleName" />
                 <span class="field-validation-valid" data-valmsg-for="ArticleName" data-valmsg-replace="true"></span>
             </div>
         </div>
         <div class="uk-form-row">
             <label class="uk-form-label">@Html.LabelFor(model => model.CategoryId, "Category")</label>
             <div class="uk-form-controls">
-                @Html.DropDownList("CategoryId", String.Empty)
+                @Html.DropDownList("CategoryId", @Model.Category.CategoryName.ToString())
                 <span class="field-validation-valid" data-valmsg-for="CategoryId" data-valmsg-replace="true"></span>
             </div>
         </div>
         <div class="uk-form-row">
             <label class="uk-form-label">@Html.LabelFor(model => model.ArticleText)</label>
             <div class="uk-form-controls" >
-                <textarea cols="73" data-val="true" data-val-required="The ArticleText field is required." id="ArticleText" name="ArticleText" rows="20"></textarea>
+                <textarea cols="73" data-val="true" data-val-required="The ArticleText field is required." id="ArticleText" name="ArticleText" rows="20">@Model.ArticleText</textarea>
                 <span class="field-validation-valid" data-valmsg-for="ArticleText" data-valmsg-replace="true"></span>
             </div>
         </div>
         <p>@Html.Hidden("UserId", 3)</p>
         <div class="uk-form-row">
-            <button class="uk-button uk-button-success" type="submit">Add Article</button>
+            <button class="uk-button uk-button-success" type="submit">Update Article</button>
         </div>
     </fieldset>
 </form>
+
+

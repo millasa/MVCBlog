@@ -12,7 +12,7 @@
 
 <div>
     <button class="uk-button uk-button-success show-modal">Delete Article</button>
-    @Html.ActionLink("Edit Article", "EditArticle", "Blog", new { @class = "uk-button uk-button-success" })
+    @Html.ActionLink("Edit Article", "EditArticle", "Blog", new { id = Model.ArticleId }, new { @class = "uk-button uk-button-success" })
 </div>
 
 <article class="uk-article">
