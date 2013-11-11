@@ -43,10 +43,10 @@
                     @Truncate(article.ArticleText, 250)
                 </td>
                 <td class="uk-width-1-10">
-                    @Html.ActionLink("View full text", "Article", new { id = article.ArticleId })
+                    <a href="@Url.Action("Article", "Blog", new { id = article.ArticleId })">View full text</a>
                 </td>
             </tr>
         }
 </table>
 
-@Html.ActionLink("Add Article", "CreateArticle", "Blog", new { @class="uk-button uk-button-success"} )
+<a class="uk-button uk-button-success" href="@Url.Action("CreateArticle", "Blog")">Add Article</a>
