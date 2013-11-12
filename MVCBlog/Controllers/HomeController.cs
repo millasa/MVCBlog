@@ -11,9 +11,6 @@ namespace MVCBlog.Controllers
     {
         private MVCBlogContext db = new MVCBlogContext();
 
-        //
-        // GET: /Home/
-
         public ActionResult Index()
         {
             var categories = db.Categories.ToList();
