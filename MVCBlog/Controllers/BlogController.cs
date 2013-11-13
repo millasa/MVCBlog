@@ -8,27 +8,18 @@ namespace MVCBlog.Controllers
     {
         MVCBlogContext db = new MVCBlogContext();
 
-        //
-        // GET: /Blog/
-
-        public ActionResult Index()
+                public ActionResult Index()
         {
             return View();
         }
 
-        //
-        // GET: /Blog/Category/<id>
-
-        public ActionResult Category(int id = 1)
+                public ActionResult Category(int id = 1)
         {
             var categoryArticles = db.Categories.Include("Articles")
                                 .Single(c => c.CategoryId == id);
 
             return View(categoryArticles);
         }
-
-        //
-        // GET: /Blog/Article/<id>
 
         public ActionResult Article(int id)
         {
@@ -38,17 +29,11 @@ namespace MVCBlog.Controllers
             return View(article);
         }
 
-        //
-        // GET: /Blog/Article/Create
-
         public ActionResult CreateArticle()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
             return View();
         }
-
-        //
-        // POST: /Blog/Article/Create
 
         [HttpPost]
         public ActionResult CreateArticle(Article article)
@@ -64,9 +49,6 @@ namespace MVCBlog.Controllers
             return View(article);
         }
 
-        //
-        // GET: /Blog/Article/Edit/5
-
         public ActionResult EditArticle(int id)
         {
             var article = db.Articles.Single(c => c.ArticleId == id);
@@ -74,9 +56,6 @@ namespace MVCBlog.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", article.CategoryId);
             return View(article);
         }
-
-        //
-        // POST: /Blog/Article/Edit/5
 
         [HttpPost]
         public ActionResult EditArticle(int id, Article article)
@@ -93,9 +72,6 @@ namespace MVCBlog.Controllers
             return View(article);
         }
 
-        //
-        // GET: /Blog/Article/Delete/5
-
         public ActionResult DeleteArticle(int id)
         {
             Article article = db.Articles.Find(id);
@@ -105,9 +81,6 @@ namespace MVCBlog.Controllers
             }
             return View(article);
         }
-
-        //
-        // POST: /Blog/Article/Delete/5
 
         [HttpPost, ActionName("DeleteArticle")]
         public ActionResult DeleteConfirmed(int id)
