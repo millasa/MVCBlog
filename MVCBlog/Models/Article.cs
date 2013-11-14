@@ -10,8 +10,11 @@ namespace MVCBlog.Models
         public int ArticleId { get; set; }
 
         [Required]
+        [Display(Name = "Title")]
         public string ArticleName { get; set; }
+        
         [Required]
+        [Display(Name = "Content")]
         public string ArticleText { get; set; }
 
         [Required]
