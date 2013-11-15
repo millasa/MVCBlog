@@ -11,7 +11,7 @@
 </ul>
 
 <div>
-    <button class="uk-button uk-button-danger show-modal">Delete Article</button>
+    <button class="uk-button uk-button-danger" id="show-modal">Delete Article</button>
     <a class="uk-button uk-button-success" href="@Url.Action("EditArticle", "Blog", new { id = Model.ArticleId })">Edit Article</a>
 </div>
 
@@ -35,16 +35,6 @@
     <p></p>
 }
 
-<div class="uk-modal" id="delete-modal">
-    <div class="uk-modal-dialog  uk-modal-dialog-slide">
-        <form method="post" action="@Url.Action("DeleteArticle", "Blog", new { id = Model.ArticleId } )">
-            <p>Are you sure you want to delete "@Model.ArticleName" article?</p>
-            <button class="uk-button uk-button-primary" id="do-cancel">Cancel</button>
-            <button class="uk-button uk-button-danger" type="submit">Delete</button>    
-        </form>
-    </div>
-</div>
-
 <form action="@Url.Action("AddComment", "Blog", new { articleId = Model.ArticleId })" method="post" class="uk-form">
 
     @Html.ValidationSummary(true)
@@ -64,11 +54,21 @@
     </fieldset>
 </form>
 
+<div class="uk-modal" id="delete-modal">
+    <div class="uk-modal-dialog  uk-modal-dialog-slide">
+        <form method="post" action="@Url.Action("DeleteArticle", "Blog", new { id = Model.ArticleId } )">
+            <p>Are you sure you want to delete "@Model.ArticleName" article?</p>
+            <button class="uk-button uk-button-primary" id="do-cancel" type="button">Cancel</button>
+            <button class="uk-button uk-button-danger" type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+
 <script>
     $(function () {
         var modal = new $.UIkit.modal.Modal("#delete-modal");
 
-        $(".show-modal").click(function () {
+        $("#show-modal").click(function () {
             modal.show();
         });
 
