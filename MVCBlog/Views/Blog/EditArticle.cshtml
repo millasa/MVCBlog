@@ -11,7 +11,7 @@
 
 <h2>Edit Article</h2>
 
-<form action="@Url.Action("EditArticle", "Blog")" method="post" class="uk-form uk-form-horizontal">
+<form action="@Url.Action("EditArticle", "Blog", new { id = Model.ArticleId })" method="post" class="uk-form uk-form-horizontal">
 
     @Html.ValidationSummary(true)
 

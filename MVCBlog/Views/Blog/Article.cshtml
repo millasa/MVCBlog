@@ -11,7 +11,7 @@
 </ul>
 
 <div>
-    <button class="uk-button uk-button-success show-modal">Delete Article</button>
+    <button class="uk-button uk-button-danger show-modal">Delete Article</button>
     <a class="uk-button uk-button-success" href="@Url.Action("EditArticle", "Blog", new { id = Model.ArticleId })">Edit Article</a>
 </div>
 
@@ -44,6 +44,25 @@
         </form>
     </div>
 </div>
+
+<form action="@Url.Action("AddComment", "Blog", new { articleId = Model.ArticleId })" method="post" class="uk-form">
+
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+        <div class="uk-form-row">
+            <div class="uk-form-controls">
+                <input class="uk-width-1-1" data-val="true" data-val-required="Comment text required." id="CommentText" name="CommentText" type="text" value="" />
+                <span class="field-validation-valid" data-valmsg-for="CommentText" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <p>@Html.Hidden("UserId", 4)</p>
+        <div class="uk-form-row">
+            <button class="uk-button uk-button-success" type="submit">Add Comment</button>
+        </div>
+    </fieldset>
+</form>
 
 <script>
     $(function () {
