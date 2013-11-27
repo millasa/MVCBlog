@@ -11,6 +11,22 @@ namespace MVCBlog.Controllers
 
         public ActionResult Index()
         {
+            /*SELECT Categories.CategoryName, COUNT(Articles.ArticleId) AS NumberOfArticles FROM Articles
+              LEFT JOIN Categories
+              ON Categories.CategoryId=Articles.CategoryId
+              GROUP BY CategoryName; 
+             
+             var q = from c in categories
+                    join a in articles on c.Id equals a.CategoryId
+                    group c by new { CategoryId = c.Id, CategoryName = c.CategoryName } into g
+                    select new CategoryInfo { 
+                        CategoryId = g.Key.CategoryId, 
+                        CategoryName = g.Key.CategoryName, 
+                        ArticleCount = g.Count()
+                    };
+
+            return q.ToList();*/
+
             return View();
         }
 
