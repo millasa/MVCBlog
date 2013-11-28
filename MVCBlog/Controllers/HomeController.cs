@@ -13,8 +13,21 @@ namespace MVCBlog.Controllers
 
         public ActionResult Index()
         {
-            var categories = db.Categories.ToList();
-            return View(categories);
+            /*SELECT Categories.CategoryName, COUNT(Articles.ArticleId) AS NumberOfArticles FROM Articles
+              LEFT JOIN Categories
+              ON Categories.CategoryId=Articles.CategoryId
+              GROUP BY CategoryName;*/
+
+            var q = from c in db.Categories
+                    join a in db.Articles on c.CategoryId equals a.CategoryId into ca
+                    select new CategoryInfo
+                    {
+                        CategoryId = c.CategoryId,
+                        CategoryName = c.CategoryName,
+                        ArticleCount = ca.Count()
+                    };
+
+            return View(q.ToList());
         }
 
         protected override void Dispose(bool disposing)

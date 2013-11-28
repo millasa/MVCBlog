@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCBlog.Models.Category>
+﻿@model List<MVCBlog.Models.CategoryInfo>
 
 @{
     ViewBag.Title = "Welcome to MyBlog";
@@ -9,6 +9,6 @@
 <ul>
     @foreach (var category in Model)
     {
-        <li><a href="@Url.Action("Category", "Blog", new { id = category.CategoryId })">@category.CategoryName</a></li>
+        <li><a href="@Url.Action("Category", "Blog", new { id = category.CategoryId })">@category.CategoryName</a><span> (@category.ArticleCount)</span></li> 
     }
 </ul>
