@@ -12,3 +12,5 @@
         <li><a href="@Url.Action("Category", "Blog", new { id = category.CategoryId })">@category.CategoryName</a><span> (@category.ArticleCount)</span></li> 
     }
 </ul>
+
+<a class="uk-button uk-button-success" href="@Url.Action("CreateCategory", "Blog")">Add Category</a>

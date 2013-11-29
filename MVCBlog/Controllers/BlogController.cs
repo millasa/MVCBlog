@@ -17,6 +17,25 @@ namespace MVCBlog.Controllers
             return View(categoryArticles);
         }
 
+        public ActionResult CreateCategory()
+        {
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Categories.Add(category);
+                db.SaveChanges();
+                return RedirectToAction("Category", new { id = category.CategoryId });
+            }
+
+            return View(category);
+        }
+
         public ActionResult Article(int id)
         {
             var article = db.Articles.Include("Comments")
